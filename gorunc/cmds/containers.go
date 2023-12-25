@@ -12,11 +12,12 @@ import (
 	mobyterm "github.com/moby/term"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
-	"gorunc/utils"
 	restclient "k8s.io/client-go/rest"
 	remoteclient "k8s.io/client-go/tools/remotecommand"
 	v1 "k8s.io/cri-api/pkg/apis/runtime/v1"
 	"k8s.io/kubectl/pkg/util/term"
+
+	"github.com/setcreed/gorunc/utils"
 )
 
 var containersCmd = &cobra.Command{

@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/cobra"
 	v1 "k8s.io/cri-api/pkg/apis/runtime/v1"
 
-	"gorunc/utils"
+	"github.com/setcreed/gorunc/utils"
 )
 
 // 镜像相关的处理
