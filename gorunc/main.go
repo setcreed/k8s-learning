@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gorunc/cmds"
+	"github.com/setcreed/gorunc/cmds"
 )
 
 func main() {

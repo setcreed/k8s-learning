@@ -3,13 +3,14 @@ package cmds
 import (
 	"context"
 	"fmt"
-	"github.com/google/uuid"
 	"log"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/spf13/cobra"
-	"gorunc/utils"
 	v1 "k8s.io/cri-api/pkg/apis/runtime/v1"
+
+	"github.com/setcreed/gorunc/utils"
 )
 
 var podsCmd = &cobra.Command{
