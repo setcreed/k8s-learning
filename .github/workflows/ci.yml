@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+env:
+  GO_VERSION: '1.21.4'
+
+jobs:
+  code-quality-check:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Go Format Check
+        run: |
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "You need to run 'gofmt' on your code."
+            exit 1
+          fi
+
+      - name: Go Vet
+        run: go vet ./...
+
+      - name: Misspell Check
+        uses: reviewdog/action-misspell@v1
+        with:
+          locale: "US"
+          reporter: "github-pr-review" # Change to "github-pr-check" if you want it to be reported as check status.
+
+      - name: Run Golint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.31
+          args: --enable=golint --new-from-rev=HEAD~1 --verbose
+
+#      - name: Go Test
+#        run: go test ./... -v -covermode=count -coverprofile=coverage.out
+#
+#      - name: Upload Test Coverage to Codecov
+#        uses: codecov/codecov-action@v2
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
+#          file: ./coverage.out
