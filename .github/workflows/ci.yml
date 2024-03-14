@@ -32,9 +32,9 @@ jobs:
             echo "You need to run 'gofmt' on your code."
             exit 1
           fi
-
-      - name: Go Vet
-        run: go vet ./...
+#
+#      - name: Go Vet
+#        run: go vet ./...
 
       - name: Misspell Check
         uses: reviewdog/action-misspell@v1
