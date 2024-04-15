@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngx-test
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: ngx-test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ngx-test
+    spec:
+      containers:
+        - name: ngx
+          image: nginx:1.20-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
