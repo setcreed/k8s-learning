@@ -5,6 +5,9 @@ kubernetes学习手册
 - [client-go的各种client用法](practice/clients/client.go)
 - [结合kustomize模拟kubectl apply -f xxx的效果](practice/clients/test.go)
 
+### informer使用
+- [informer基本创建使用](practice/informer-test/test.go)
+
 ## CRI
 - [容器运行时基础](https://setcreed.github.io/posts/d9ca3d6f/)
 - [CRI开发](gorunc/README.md)
